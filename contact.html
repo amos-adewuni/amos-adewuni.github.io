@@ -41,12 +41,27 @@
     <main>
         <section id="contact">
             <h2>Contact Me</h2>
-            <form action="your-backend-endpoint" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+                <form action="https://formspree.io/f/xqazonag" method="POST">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                  </div>
+                
+                  <!-- Add hidden input for thank-you page redirect -->
+                  <input type="hidden" name="_redirect" value="https://your-website.github.io/thank-you.html">
+                
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+
         </section>
     </main>
 
