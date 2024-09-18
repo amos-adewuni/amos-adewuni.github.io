@@ -57,16 +57,24 @@
                     </iframe>
                     <script>
                       function attachIframeListener(iframe) {
-                        // Send a postMessage to the parent window on iframe load
+                        // Log when the iframe onload function is triggered
+                        console.log('Iframe loaded:', iframe.getAttribute('data-report-label'));
+                    
                         var reportLabel = iframe.getAttribute('data-report-label');
+                        // Send a postMessage to the parent window on iframe load
                         iframe.contentWindow.postMessage(reportLabel + ' Clicked', '*');
                       }
                     
                       // Listen for the postMessage event in the parent window
                       window.addEventListener("message", function(event) {
-                        // Extract report label from the message
+                        // Log the received message to check if it's coming through
+                        console.log('Received message from iframe:', event.data);
+                    
                         if (event.data.endsWith('Clicked')) {
                           var reportLabel = event.data.replace(' Clicked', '');
+                    
+                          // Log the report label to ensure it's captured correctly
+                          console.log('Report Label:', reportLabel);
                     
                           // Send an event to Google Tag Manager via the dataLayer with the dynamic report label
                           dataLayer.push({
@@ -75,9 +83,13 @@
                             'event_label': reportLabel,
                             'event_action': 'Click'
                           });
+                    
+                          // Log when the event is pushed to the dataLayer
+                          console.log('Event pushed to dataLayer');
                         }
                       }, false);
                     </script>
+
 
                    
                 </div>
