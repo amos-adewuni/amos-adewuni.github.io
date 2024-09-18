@@ -51,31 +51,35 @@
                 </div>
             
                 <!-- Embedded Power BI Report -->
-                    <iframe id="powerbi-report" title="London Bus Safety Dashboard" width="600" height="373.5"
+                    <iframe id="powerbi-report-1" title="London Bus Safety Dashboard" width="600" height="373.5"
                             src="https://app.powerbi.com/view?r=eyJrIjoiZTcxMWM1MjEtYWFlNy00OGViLThhNjgtZWQxMzZmOTAwZjA3IiwidCI6IjVmY2VmN2I1LTAzZDMtNDVjNC05ZDZhLTRkMGExNDJlNjI0OSJ9"
                             frameborder="0" allowfullscreen="true" onload="attachIframeListener()">
                     </iframe>
-                    
                     <script>
-                      function attachIframeListener() {
-                        var iframe = document.getElementById("powerbi-report");
-                        
+                      function attachIframeListener(iframe) {
                         // Send a postMessage to the parent window on iframe load
-                        iframe.contentWindow.postMessage('Power BI Report Clicked', '*');
+                        var reportLabel = iframe.getAttribute('data-report-label');
+                        iframe.contentWindow.postMessage(reportLabel + ' Clicked', '*');
                       }
                     
                       // Listen for the postMessage event in the parent window
                       window.addEventListener("message", function(event) {
-                        if (event.data === 'Power BI Report Clicked') {
-                          // Send an event to Google Tag Manager via the dataLayer
+                        // Extract report label from the message
+                        if (event.data.endsWith('Clicked')) {
+                          var reportLabel = event.data.replace(' Clicked', '');
+                    
+                          // Send an event to Google Tag Manager via the dataLayer with the dynamic report label
                           dataLayer.push({
                             'event': 'powerbi_report_click',
                             'event_category': 'Power BI',
-                            'event_label': 'London Bus Safety Dashboard'
+                            'event_label': reportLabel,
+                            'event_action': 'Click'
                           });
                         }
                       }, false);
                     </script>
+
+                   
                 </div>
                 <div class="portfolio-item">
                 <h2>Stock Performance Analysis</h2>
@@ -85,10 +89,10 @@
                 </div>
             
                 <!-- Embedded Power BI Report -->
-                <iframe title="Stock_Analysis" width="600" height="373.5" 
-                    src="https://app.powerbi.com/view?r=eyJrIjoiOGI1OGNhZDctMTQ5NC00MmZjLWEzYzgtNGJjNDk2OWU5Nzc3IiwidCI6IjVmY2VmN2I1LTAzZDMtNDVjNC05ZDZhLTRkMGExNDJlNjI0OSJ9" 
-                    frameborder="0" allowfullscreen="true">
-                </iframe>
+                <iframe id="powerbi-report-2" data-report-label="Stock Price Analysis" title="Stock Price Analysis" width="600" height="373.5"
+                        src="https://app.powerbi.com/view?r=eyJrIjoiOGI1OGNhZDctMTQ5NC00MmZjLWEzYzgtNGJjNDk2OWU5Nzc3IiwidCI6IjVmY2VmN2I1LTAzZDMtNDVjNC05ZDZhLTRkMGExNDJlNjI0OSJ9"  frameborder="0" allowfullscreen="true" onload="attachIframeListener(this)">
+                </iframe>    
+                
 
                  <div class="portfolio-item">
                 <h2>Data Validation in Excel </h2>
