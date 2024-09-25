@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Store</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WVKK2DQD");
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WVKK2DQD"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <h1>Welcome to My Book Store</h1>
+
+    <!-- Book 1 -->
+    <div class="product clearfix">
+      <h2>Google Analytics for Beginners: Unlocking Web Insights</h2>
+      <img
+        src="images/book1.jpg"
+        alt="Google Analytics for Beginners: Unlocking Web Insights"
+      />
+      <p>$10.00</p>
+      <button
+        id="buy-button-1"
+        onclick="buyBook('Google Analytics for Beginners: Unlocking Web Insights', 10)"
+      >
+        Buy Now
+      </button>
+    </div>
+
+    <!-- Book 2 -->
+    <div class="product">
+      <h2>Google Analytics Mastery: Advanced Techniques for Data Experts</h2>
+      <img
+        src="images/book2.jpg"
+        alt="Google Analytics Mastery: Advanced Techniques for Data Experts"
+      />
+      <p>$15.00</p>
+      <button
+        id="buy-button-2"
+        onclick="buyBook('Google Analytics Mastery: Advanced Techniques for Data Experts', 15)"
+      >
+        Buy Now
+      </button>
+    </div>
+
+    <script>
+      function buyBook(title, price) {
+        console.log("Buying:", title, "Price:", price);
+        dataLayer.push({
+          event: "purchase",
+          ecommerce: {
+            currencyCode: "USD",
+            purchase: {
+              actionField: {
+                id: "T12345", // Transaction ID
+                affiliation: "Online Store",
+                revenue: price,
+                tax: 0,
+                shipping: 0,
+              },
+              products: [
+                {
+                  name: title,
+                  id: "P12345",
+                  price: price,
+                  quantity: 1,
+                },
+              ],
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
