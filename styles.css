@@ -147,6 +147,69 @@ iframe {
   background-color: #333; /* GitHub color */
 }
 
+/* Basic styling for the product layout */
+.product {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px;
+    width: 220px;
+    float: left;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a subtle shadow */
+    transition: box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.product img {
+    display: block;
+    margin: 0 auto 10px;
+    max-width: 100%;
+    height: auto;
+}
+
+.product h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Styling for buttons */
+.product button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 5px 0;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.product button:hover {
+    background-color: #0056b3;
+}
+
+/* Clear floats after the products */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Responsive Design for Mobile Devices */
+@media screen and (max-width: 600px) {
+    .product {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
 
 
 
